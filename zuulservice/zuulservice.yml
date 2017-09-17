@@ -1,0 +1,25 @@
+server:
+  port: 5555
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
+
+management:
+  security:
+    enabled: false
+
+zuul:
+  routes:
+    userservice: /user/**
+    itemservice: /item/**
+  ignored-services: '*'
+  prefix: /api
+
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2500
